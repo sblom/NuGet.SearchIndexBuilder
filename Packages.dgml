@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DirectedGraph GraphDirection="LeftToRight" xmlns="http://schemas.microsoft.com/vs/2009/dgml">
+  <Nodes>
+    <Node Id="SearchIndexFromCatalog" Label="SearchIndexFromCatalog" Category="Project" />
+    <Node Id="dotNetRDF 1.0.6.3421" Label="dotNetRDF 1.0.6.3421" Category="Package" />
+    <Node Id="EntityFramework 5.0.0" Label="EntityFramework 5.0.0" Category="Package" />
+    <Node Id="HtmlAgilityPack 1.4.6" Label="HtmlAgilityPack 1.4.6" Category="Package" />
+    <Node Id="json-ld.net 1.0.1" Label="json-ld.net 1.0.1" Category="Package" />
+    <Node Id="Lucene.Net 3.0.3" Label="Lucene.Net 3.0.3" Category="Package" />
+    <Node Id="Lucene.Net.Contrib 3.0.3" Label="Lucene.Net.Contrib 3.0.3" Category="Package" />
+    <Node Id="Lucene.Net.Store.Azure 2.0.4937.26631" Label="Lucene.Net.Store.Azure 2.0.4937.26631" Category="Package" />
+    <Node Id="Microsoft.Data.Edm 5.6.0" Label="Microsoft.Data.Edm 5.6.0" Category="Package" />
+    <Node Id="Microsoft.Data.OData 5.6.0" Label="Microsoft.Data.OData 5.6.0" Category="Package" />
+    <Node Id="Microsoft.Data.Services.Client 5.6.0" Label="Microsoft.Data.Services.Client 5.6.0" Category="Package" />
+    <Node Id="Microsoft.Web.Xdt 2.1.1" Label="Microsoft.Web.Xdt 2.1.1" Category="Package" />
+    <Node Id="Microsoft.WindowsAzure.ConfigurationManager 1.8.0.0" Label="Microsoft.WindowsAzure.ConfigurationManager 1.8.0.0" Category="Package" />
+    <Node Id="Newtonsoft.Json 6.0.4" Label="Newtonsoft.Json 6.0.4" Category="Package" />
+    <Node Id="NuGet.Core 2.8.3-alpha0001" Label="NuGet.Core 2.8.3-alpha0001" Category="Package" />
+    <Node Id="NuGet.Indexing 3.0.43-r-master" Label="NuGet.Indexing 3.0.43-r-master" Category="Package" />
+    <Node Id="NuGet.Services.Metadata.Catalog 3.0.103-r-master" Label="NuGet.Services.Metadata.Catalog 3.0.103-r-master" Category="Package" />
+    <Node Id="NuGet.Versioning 0.1.0-alpha" Label="NuGet.Versioning 0.1.0-alpha" Category="Package" />
+    <Node Id="NuGetGallery.Core 3.0.102-r-master" Label="NuGetGallery.Core 3.0.102-r-master" Category="Package" />
+    <Node Id="SharpZipLib 0.86.0" Label="SharpZipLib 0.86.0" Category="Package" />
+    <Node Id="System.Spatial 5.6.0" Label="System.Spatial 5.6.0" Category="Package" />
+    <Node Id="VDS.Common 1.3.0" Label="VDS.Common 1.3.0" Category="Package" />
+    <Node Id="WindowsAzure.Storage 3.0.3.0" Label="WindowsAzure.Storage 3.0.3.0" Category="Package" />
+  </Nodes>
+  <Links>
+    <Link Source="dotNetRDF 1.0.6.3421" Target="VDS.Common 1.3.0" Category="Package Dependency" />
+    <Link Source="dotNetRDF 1.0.6.3421" Target="Newtonsoft.Json 6.0.4" Category="Package Dependency" />
+    <Link Source="dotNetRDF 1.0.6.3421" Target="HtmlAgilityPack 1.4.6" Category="Package Dependency" />
+    <Link Source="dotNetRDF 1.0.6.3421" Target="VDS.Common 1.3.0" Category="Package Dependency" />
+    <Link Source="dotNetRDF 1.0.6.3421" Target="Newtonsoft.Json 6.0.4" Category="Package Dependency" />
+    <Link Source="dotNetRDF 1.0.6.3421" Target="HtmlAgilityPack 1.4.6" Category="Package Dependency" />
+    <Link Source="dotNetRDF 1.0.6.3421" Target="VDS.Common 1.3.0" Category="Package Dependency" />
+    <Link Source="dotNetRDF 1.0.6.3421" Target="Newtonsoft.Json 6.0.4" Category="Package Dependency" />
+    <Link Source="dotNetRDF 1.0.6.3421" Target="HtmlAgilityPack 1.4.6" Category="Package Dependency" />
+    <Link Source="dotNetRDF 1.0.6.3421" Target="VDS.Common 1.3.0" Category="Package Dependency" />
+    <Link Source="dotNetRDF 1.0.6.3421" Target="Newtonsoft.Json 6.0.4" Category="Package Dependency" />
+    <Link Source="dotNetRDF 1.0.6.3421" Target="HtmlAgilityPack 1.4.6" Category="Package Dependency" />
+    <Link Source="dotNetRDF 1.0.6.3421" Target="VDS.Common 1.3.0" Category="Package Dependency" />
+    <Link Source="dotNetRDF 1.0.6.3421" Target="Newtonsoft.Json 6.0.4" Category="Package Dependency" />
+    <Link Source="json-ld.net 1.0.1" Target="Newtonsoft.Json 6.0.4" Category="Package Dependency" />
+    <Link Source="Lucene.Net 3.0.3" Target="SharpZipLib 0.86.0" Category="Package Dependency" />
+    <Link Source="Lucene.Net.Contrib 3.0.3" Target="Lucene.Net 3.0.3" Category="Package Dependency" />
+    <Link Source="Lucene.Net.Store.Azure 2.0.4937.26631" Target="Lucene.Net 3.0.3" Category="Package Dependency" />
+    <Link Source="Lucene.Net.Store.Azure 2.0.4937.26631" Target="Microsoft.Data.Edm 5.6.0" Category="Package Dependency" />
+    <Link Source="Lucene.Net.Store.Azure 2.0.4937.26631" Target="Microsoft.Data.OData 5.6.0" Category="Package Dependency" />
+    <Link Source="Lucene.Net.Store.Azure 2.0.4937.26631" Target="Microsoft.WindowsAzure.ConfigurationManager 1.8.0.0" Category="Package Dependency" />
+    <Link Source="Lucene.Net.Store.Azure 2.0.4937.26631" Target="SharpZipLib 0.86.0" Category="Package Dependency" />
+    <Link Source="Lucene.Net.Store.Azure 2.0.4937.26631" Target="System.Spatial 5.6.0" Category="Package Dependency" />
+    <Link Source="Lucene.Net.Store.Azure 2.0.4937.26631" Target="WindowsAzure.Storage 3.0.3.0" Category="Package Dependency" />
+    <Link Source="Microsoft.Data.OData 5.6.0" Target="System.Spatial 5.6.0" Category="Package Dependency" />
+    <Link Source="Microsoft.Data.OData 5.6.0" Target="Microsoft.Data.Edm 5.6.0" Category="Package Dependency" />
+    <Link Source="Microsoft.Data.Services.Client 5.6.0" Target="Microsoft.Data.OData 5.6.0" Category="Package Dependency" />
+    <Link Source="NuGet.Core 2.8.3-alpha0001" Target="Microsoft.Web.Xdt 2.1.1" Category="Package Dependency" />
+    <Link Source="NuGet.Indexing 3.0.43-r-master" Target="Lucene.Net.Contrib 3.0.3" Category="Package Dependency" />
+    <Link Source="NuGet.Indexing 3.0.43-r-master" Target="Lucene.Net.Store.Azure 2.0.4937.26631" Category="Package Dependency" />
+    <Link Source="NuGet.Indexing 3.0.43-r-master" Target="NuGetGallery.Core 3.0.102-r-master" Category="Package Dependency" />
+    <Link Source="NuGet.Services.Metadata.Catalog 3.0.103-r-master" Target="dotNetRDF 1.0.6.3421" Category="Package Dependency" />
+    <Link Source="NuGet.Services.Metadata.Catalog 3.0.103-r-master" Target="json-ld.net 1.0.1" Category="Package Dependency" />
+    <Link Source="NuGet.Services.Metadata.Catalog 3.0.103-r-master" Target="NuGet.Versioning 0.1.0-alpha" Category="Package Dependency" />
+    <Link Source="NuGet.Services.Metadata.Catalog 3.0.103-r-master" Target="WindowsAzure.Storage 3.0.3.0" Category="Package Dependency" />
+    <Link Source="NuGetGallery.Core 3.0.102-r-master" Target="EntityFramework 5.0.0" Category="Package Dependency" />
+    <Link Source="NuGetGallery.Core 3.0.102-r-master" Target="Newtonsoft.Json 6.0.4" Category="Package Dependency" />
+    <Link Source="NuGetGallery.Core 3.0.102-r-master" Target="NuGet.Core 2.8.3-alpha0001" Category="Package Dependency" />
+    <Link Source="NuGetGallery.Core 3.0.102-r-master" Target="System.Spatial 5.6.0" Category="Package Dependency" />
+    <Link Source="NuGetGallery.Core 3.0.102-r-master" Target="WindowsAzure.Storage 3.0.3.0" Category="Package Dependency" />
+    <Link Source="WindowsAzure.Storage 3.0.3.0" Target="Microsoft.Data.OData 5.6.0" Category="Package Dependency" />
+    <Link Source="WindowsAzure.Storage 3.0.3.0" Target="Newtonsoft.Json 6.0.4" Category="Package Dependency" />
+    <Link Source="WindowsAzure.Storage 3.0.3.0" Target="Microsoft.Data.Services.Client 5.6.0" Category="Package Dependency" />
+    <Link Source="WindowsAzure.Storage 3.0.3.0" Target="Microsoft.WindowsAzure.ConfigurationManager 1.8.0.0" Category="Package Dependency" />
+    <Link Source="SearchIndexFromCatalog" Target="NuGet.Indexing 3.0.43-r-master" Category="Installed Package" />
+    <Link Source="SearchIndexFromCatalog" Target="NuGet.Services.Metadata.Catalog 3.0.103-r-master" Category="Installed Package" />
+  </Links>
+  <Categories>
+    <Category Id="Project" />
+    <Category Id="Package" />
+  </Categories>
+  <Styles>
+    <Style TargetType="Node" GroupLabel="Project" ValueLabel="True">
+      <Condition Expression="HasCategory('Project')" />
+      <Setter Property="Background" Value="Blue" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="Package Dependency" ValueLabel="True">
+      <Condition Expression="HasCategory('Package Dependency')" />
+      <Setter Property="Background" Value="Yellow" />
+    </Style>
+  </Styles>
+</DirectedGraph>
