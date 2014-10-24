@@ -1,4 +1,5 @@
-﻿using Lucene.Net.Store;
+﻿using Lucene.Net.Index;
+using Lucene.Net.Store;
 using NuGet.Indexing;
 using NuGet.Services.Metadata.Catalog.Collecting;
 using System;
@@ -12,26 +13,59 @@ namespace SearchIndexFromCatalog
 {
     class Program
     {
-        static void Main(string[] args)
+        static int Main(string[] args)
         {
-            BuildSearchIndexFromCatalog().Wait();
+            List<string> argsList = args.ToList();
+
+            if (args.Length < 2)
+            {
+                Console.WriteLine(@"\
+Usage:
+    program.exe [--resetIndex] indexDirectory catalogPath [resolverBlobPath]
+");
+
+                return 1;
+            }
+
+            bool resetIndex = (0 < argsList.RemoveAll(arg => arg == "--resetIndex"));
+
+            BuildSearchIndexFromCatalog(args[1], args.Length == 3 ? args[2] : null, args[0], resetIndex).Wait();
+
+            return 0;
         }
 
-        static async Task BuildSearchIndexFromCatalog()
+        static async Task BuildSearchIndexFromCatalog(string catalogPath, string resolverBlobPath, string dest, bool resetIndex)
         {
-            Directory dir = new Lucene.Net.Store.SimpleFSDirectory(new System.IO.DirectoryInfo("c:\\data\\lucene.index"));
-            PackageIndexing.CreateNewEmptyIndex(dir);
+            Directory dir = new Lucene.Net.Store.SimpleFSDirectory(new System.IO.DirectoryInfo(dest));
+
+            if (resetIndex)
+            {
+                PackageIndexing.CreateNewEmptyIndex(dir);
+            }
 
             var catalog = new SearchIndexFromCatalogCollector(dir, new LocalFrameworksList(".\\projectframeworks.v1.json"),
-                "{0}/{1}.json")
-            /*{
-                DependentCollections = new List<Uri> { new Uri("https://nugetsblom20140319.blob.core.windows.net/cursor-temp/") }
-            }*/;
+                "{0}/{1}.json");
 
-            await catalog.Run(
+            if (resolverBlobPath != null)
+            {
+                catalog.DependentCollections = new List<Uri> { new Uri(resolverBlobPath) };
+            }
+
+            CollectorCursor cursor;
+
+            //try
+            //{
+            //    IndexWriter writer = SearchIndexFromCatalogCollector.CreateIndexWriter(dir, false);
+            //}
+            //catch
+            //{
+                cursor = CollectorCursor.None;
+            //}
+
+            CollectorCursor finalCursor = await catalog.Run(
                 new NuGet.Services.Metadata.Catalog.Collecting.CollectorHttpClient(),
-                new Uri("https://nugetjuste.blob.core.windows.net/ver01/catalog/index.json"),
-                CollectorCursor.None);
+                new Uri(catalogPath),
+                cursor);
 
             return;
         }

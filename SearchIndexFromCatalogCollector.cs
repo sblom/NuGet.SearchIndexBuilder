@@ -72,7 +72,7 @@ namespace SearchIndexFromCatalog
             return true;
         }
 
-        private static IndexWriter CreateIndexWriter(Lucene.Net.Store.Directory directory, bool create)
+        internal static IndexWriter CreateIndexWriter(Lucene.Net.Store.Directory directory, bool create)
         {
             IndexWriter indexWriter = new IndexWriter(directory, new PackageAnalyzer(), create, IndexWriter.MaxFieldLength.UNLIMITED);
             indexWriter.MergeFactor = MergeFactor;
