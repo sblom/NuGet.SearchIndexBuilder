@@ -24,13 +24,13 @@ namespace SearchIndexFromCatalog
 
             var catalog = new SearchIndexFromCatalogCollector(dir, new LocalFrameworksList(".\\projectframeworks.v1.json"),
                 "{0}/{1}.json")
-            {
+            /*{
                 DependentCollections = new List<Uri> { new Uri("https://nugetsblom20140319.blob.core.windows.net/cursor-temp/") }
-            };
+            }*/;
 
             await catalog.Run(
                 new NuGet.Services.Metadata.Catalog.Collecting.CollectorHttpClient(),
-                new Uri("http://nugetjohtaylo.blob.core.windows.net/ver38/catalog/index.json"),
+                new Uri("https://nugetjuste.blob.core.windows.net/ver01/catalog/index.json"),
                 CollectorCursor.None);
 
             return;

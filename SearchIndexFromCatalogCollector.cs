@@ -150,12 +150,14 @@ namespace SearchIndexFromCatalog
         {
             Document doc = new Document();
 
-            if (((IDictionary<string, JToken>)package).ContainsKey("packageTargetFrameworks"))
+            if (((IDictionary<string, JToken>)package).ContainsKey("supportedFrameworks"))
             {
-                foreach (JToken fwk in package["packageTargetFrameworks"])
+                foreach (JToken fwk in package["supportedFrameworks"])
                 {
                     string framework = (string)fwk;
+
                     FrameworkName frameworkName = VersionUtility.ParseFrameworkName(framework);
+
                     lock (_frameworkNames)
                     {
                         if (!_frameworkNames.ContainsKey(framework))
@@ -168,6 +170,7 @@ namespace SearchIndexFromCatalog
                             }
                         }
                     }
+                    Add(doc, "TargetFramework", framework == "any" ? "any" : frameworkName.ToString(), Field.Store.YES /* NO */, Field.Index.NO, Field.TermVector.NO);
                 }
             }
 
