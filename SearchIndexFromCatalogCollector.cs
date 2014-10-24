@@ -38,7 +38,7 @@ namespace SearchIndexFromCatalog
             _packageTemplate = registrationTemplate;
         }
 
-        protected override async Task ProcessBatch(CollectorHttpClient client, IList<Newtonsoft.Json.Linq.JObject> items, Newtonsoft.Json.Linq.JObject context)
+        protected override async Task<bool> ProcessBatch(CollectorHttpClient client, IList<Newtonsoft.Json.Linq.JObject> items, Newtonsoft.Json.Linq.JObject context)
         {
             _cache = new NuGet3.Client.Core.JsonLdPageCache(client);
 
@@ -68,6 +68,8 @@ namespace SearchIndexFromCatalog
                 }
                 indexWriter.Commit();
             }
+
+            return true;
         }
 
         private static IndexWriter CreateIndexWriter(Lucene.Net.Store.Directory directory, bool create)
