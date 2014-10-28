@@ -25,16 +25,14 @@ namespace SearchIndexFromCatalog
         const int MaxMergeDocs = 7999;              //  Except never merge segments that have more docs than this
 
         Lucene.Net.Store.Directory _directory;
-        FrameworksList _frameworks;
         string _packageTemplate;
         NuGet3.Client.Core.JsonLdPageCache _cache;
 
         static Dictionary<string, string> _frameworkNames = new Dictionary<string, string>();
 
-        public SearchIndexFromCatalogCollector(Lucene.Net.Store.Directory directory, FrameworksList frameworks, string registrationTemplate): base(100)
+        public SearchIndexFromCatalogCollector(Lucene.Net.Store.Directory directory, string registrationTemplate): base(100)
         {
             _directory = directory;
-            _frameworks = frameworks;
             _packageTemplate = registrationTemplate;
         }
 
@@ -44,8 +42,6 @@ namespace SearchIndexFromCatalog
 
             PerfEventTracker perfTracker = new PerfEventTracker();
             TextWriter log = Console.Out;
-
-            IList<FrameworkName> projectFxs = _frameworks.Load();
 
             Task<Document>[] packages = items.Select(x => MakePackage(client, x)).Where(x => x != null).ToArray();
 

@@ -43,8 +43,7 @@ Usage:
                 PackageIndexing.CreateNewEmptyIndex(dir);
             }
 
-            var catalog = new SearchIndexFromCatalogCollector(dir, new LocalFrameworksList(".\\projectframeworks.v1.json"),
-                "{0}/{1}.json");
+            var catalog = new SearchIndexFromCatalogCollector(dir, "{0}/{1}.json");
 
             if (resolverBlobPath != null)
             {
