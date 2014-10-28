@@ -95,22 +95,7 @@ namespace SearchIndexFromCatalog
 
             string packageUrl = string.Format(_packageTemplate, id.ToLowerInvariant(), version.ToLowerInvariant());
 
-            //try
-            //{
-            //    JObject package = (JObject)await _cache.Fetch(packageUrl);
-            //    package["id"] = result["id"];
-            //    if (((IDictionary<string,JToken>)package).ContainsKey("http://schema.nuget.org/schema#published"))
-            //    {
-            //        // This is to handle some strange artifacts from http://preview.nuget.org/ver3-ctp1/packageregistrations/1/...
-            //        package["published"] = package["http://schema.nuget.org/schema#published"];
-            //    }
-                return CreateLuceneDocument(result, packageUrl);
-            //}
-            //catch (Exception ex)
-            //{
-            //    Console.WriteLine("Couldn't create document: {0} ({1})", (string)catalogEntry["url"], ex.Message);
-            //    return null;
-            //}
+            return CreateLuceneDocument(result, packageUrl);
         }
 
         private static void Add(Document doc, string name, string value, Field.Store store, Field.Index index, Field.TermVector termVector, float boost = 1.0f)
