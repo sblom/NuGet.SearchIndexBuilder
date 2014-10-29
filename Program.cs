@@ -19,8 +19,8 @@ namespace SearchIndexFromCatalog
 
             if (args.Length < 2)
             {
-                Console.WriteLine(@"\
-Usage:
+                Console.WriteLine(
+@"Usage:
     program.exe [--resetIndex] indexDirectory catalogPath [resolverBlobPath]
 ");
 
@@ -29,7 +29,7 @@ Usage:
 
             bool resetIndex = (0 < argsList.RemoveAll(arg => arg == "--resetIndex"));
 
-            BuildSearchIndexFromCatalog(args[1], args.Length == 3 ? args[2] : null, args[0], resetIndex).Wait();
+            BuildSearchIndexFromCatalog(argsList[1], argsList.Count() == 3 ? argsList[2] : null, argsList[0], resetIndex).Wait();
 
             return 0;
         }

@@ -76,12 +76,6 @@ namespace SearchIndexFromCatalog
 
             indexWriter.SetSimilarity(new CustomSimilarity());
 
-            //StreamWriter streamWriter = new StreamWriter(Console.OpenStandardOutput());
-            //indexWriter.SetInfoStream(streamWriter);
-            //streamWriter.Flush();
-
-            // this should theoretically work but appears to cause empty commit commitMetadata to not be saved
-            //((LogMergePolicy)indexWriter.MergePolicy).SetUseCompoundFile(false);
             return indexWriter;
         }
 
@@ -180,14 +174,6 @@ namespace SearchIndexFromCatalog
             Add(doc, "Description", (string)package["description"], Field.Store.YES /* NO */, Field.Index.ANALYZED, Field.TermVector.WITH_POSITIONS_OFFSETS);
             Add(doc, "Authors", string.Join(", ", package["authors"].Select(s => (string)s)), Field.Store.YES /* NO */, Field.Index.ANALYZED, Field.TermVector.WITH_POSITIONS_OFFSETS);
 
-            // TODO: We don't have owners in the v3 flow
-            //foreach (User owner in package.PackageRegistration.Owners)
-            //{
-            //    Add(doc, "Owners", owner.Username, Field.Store.NO, Field.Index.ANALYZED, Field.TermVector.WITH_POSITIONS_OFFSETS);
-            //}
-
-            //  Sorting:
-
             doc.Add(new NumericField("PublishedDate", Field.Store.YES, true).SetIntValue(int.Parse(package["published"].ToObject<DateTime>().ToString("yyyyMMdd"))));
 
             DateTime lastEdited = (DateTime)(package["lastEdited"] ?? package["published"]);
@@ -197,38 +183,7 @@ namespace SearchIndexFromCatalog
             displayName = displayName.ToLower(CultureInfo.CurrentCulture);
             Add(doc, "DisplayName", displayName, Field.Store.NO, Field.Index.NOT_ANALYZED, Field.TermVector.NO);
 
-            // Add(doc, "IsLatest", (bool)package["isAbsoluteLatestVersion"] ? 1 : 0, Field.Store.NO, Field.Index.NOT_ANALYZED, Field.TermVector.NO);
-            // Add(doc, "IsLatestStable", (bool)package["isLatestVersion"] ? 1 : 0, Field.Store.NO, Field.Index.NOT_ANALYZED, Field.TermVector.NO);
-
-            // TODO: Looks like we don't have Listed plumbed through?
-            // Add(doc, "Listed", 1 /* (bool)package["listed"] ? 1 : 0 */, Field.Store.NO, Field.Index.NOT_ANALYZED, Field.TermVector.NO);
-
-            // TODO: There's no feed support in v3.
-            //
-            //if (documentData.Data.Feeds != null)
-            //{
-            //    foreach (string feed in documentData.Data.Feeds)
-            //    {
-            //        //  Store this to aid with debugging
-            //        Add(doc, "CuratedFeed", feed, Field.Store.YES, Field.Index.NOT_ANALYZED, Field.TermVector.NO);
-            //    }
-            //}
-
-            //  Add Package Key so we can quickly retrieve ranges of packages (in order to support the synchronization with the gallery)
-
-            // doc.Add(new NumericField("Key", Field.Store.YES, index: true).SetIntValue(package.Key));
-
-            // doc.Add(new NumericField("Checksum", Field.Store.YES, true).SetIntValue(documentData.Data.Checksum));
-
-            //  Data we want to store in index - these cannot be queried
-
             Add(doc, "Url", packageUrl.ToString(), Field.Store.YES, Field.Index.NO, Field.TermVector.NO);
-
-            // Add facets
-            //foreach (var facet in documentData.DocFacets)
-            //{
-            //    Add(doc, "Facet", facet, Field.Store.YES, Field.Index.NOT_ANALYZED_NO_NORMS, Field.TermVector.NO);
-            //}
 
             doc.Boost = DetermineLanguageBoost((string)package["id"], (string)package["language"]);
 
